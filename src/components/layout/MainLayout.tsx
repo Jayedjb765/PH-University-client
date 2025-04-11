@@ -8,18 +8,33 @@ import { createElement } from "react";
 
 const { Header, Content, Footer, Sider } = Layout;
 const items = [
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-  UserOutlined,
-].map((icon, index) => ({
-  key: String(index + 1),
-  icon: createElement(icon),
-  label: `nav ${index + 1}`,
-}));
+  {
+    key: "1",
+    label: "Dashboard",
+  },
+  {
+    key: "2",
+    label: "Profile",
+  },
+  {
+    key: "3",
+    label: "User Mangement",
+    children: [
+      {
+        key: "11",
+        label: "Create Admin",
+      },
+      {
+        key: "21",
+        label: "Create Student",
+      },
+    ],
+  },
+];
+
 const MainLayout = () => {
   return (
-    <Layout>
+    <Layout style={{ height: "100vh" }}>
       <Sider
         breakpoint="lg"
         collapsedWidth="0"
@@ -47,7 +62,7 @@ const MainLayout = () => {
               minHeight: 360,
             }}
           >
-            content
+            <h1>Main content shoud be here</h1>
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
