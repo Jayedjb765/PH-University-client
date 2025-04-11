@@ -1,4 +1,4 @@
-import { Layout, Menu } from "antd";
+import { Layout, Menu, MenuProps } from "antd";
 import {
   UploadOutlined,
   UserOutlined,
@@ -7,7 +7,7 @@ import {
 import { createElement } from "react";
 
 const { Header, Content, Footer, Sider } = Layout;
-const items = [
+const items: MenuProps["items"] = [
   {
     key: "1",
     label: "Dashboard",
@@ -45,7 +45,18 @@ const MainLayout = () => {
           console.log(collapsed, type);
         }}
       >
-        <div className="demo-logo-vertical" />
+        <div
+          style={{
+            color: "white",
+            textAlign: "center",
+            height: "4rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <h1>Ph uni</h1>
+        </div>
         <Menu
           theme="dark"
           mode="inline"
