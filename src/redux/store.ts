@@ -3,7 +3,16 @@ import authReducer from "./features/auth/authSlice";
 import { baseApi } from "./api/basAPi";
 
 import storage from "redux-persist/lib/storage";
-import { persistReducer, persistStore } from "redux-persist";
+import {
+  persistReducer,
+  persistStore,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
 
 const persistConfig = {
   key: "auth",
@@ -16,7 +25,11 @@ export const store = configureStore({
     auth: persistAuthReducer,
   },
   middleware: (getDefaultMiddelewares) =>
-    getDefaultMiddelewares().concat(baseApi.middleware),
+    getDefaultMiddelewares({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }).concat(baseApi.middleware),
 });
 // Infer the `RootState`,  `AppDispatch`, and `AppStore` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
