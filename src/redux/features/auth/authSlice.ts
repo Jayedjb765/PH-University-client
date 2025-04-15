@@ -6,6 +6,10 @@ export type TUser = {
   iat: number;
   exp: number;
 };
+type TAuthstate = {
+  user: null | TUser;
+  token: null | TUser;
+};
 
 const initialState: TAuthstate = {
   user: null,
